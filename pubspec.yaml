@@ -10,6 +10,7 @@ environment:
 
 dependencies:
   abstract_dart: ^1.0.0
+  decimal: ^0.3.5
 
 dev_dependencies:
   extra_pedantic: ^1.1.1+3
