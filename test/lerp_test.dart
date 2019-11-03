@@ -1,3 +1,4 @@
+import 'package:abstract_dart/abstract_dart.dart';
 import 'package:abstract_lerp/abstract_lerp.dart';
 import 'package:test/test.dart';
 import 'package:decimal/decimal.dart';
@@ -86,6 +87,25 @@ void main() {
     test("!=", () {
       expect(const NumLerp(2.0, 2.0), isNot(const DoubleLerp(2.0, 2.0)));
       expect(const DoubleLerp(2.0, 1.0), isNot(const DoubleLerp(2.0, 2.0)));
+      expect(
+          FieldLerp<double>(
+                        2.0,
+                        1.0,
+                        Field_.create(
+                          Group_.create<double>(
+                              () => 0.0, (a, b) => a + b, (a, b) => a - b),
+                          Group_.create<double>(
+                              () => 1.0, (a, b) => a * b, (a, b) => a / b),
+                        )),
+          isNot(FieldLerp<double>(
+              2.0,
+              1.0,
+              Field_.create(
+                Group_.create<double>(
+                    () => 0.0, (a, b) => a + b, (a, b) => a - b),
+                Group_.create<double>(
+                    () => 1.0, (a, b) => a * b, (a, b) => a / b),
+              ))));
     });
 
     test("hashCode", () {
