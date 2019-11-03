@@ -89,14 +89,14 @@ void main() {
       expect(const DoubleLerp(2.0, 1.0), isNot(const DoubleLerp(2.0, 2.0)));
       expect(
           FieldLerp<double>(
-                        2.0,
-                        1.0,
-                        Field_.create(
-                          Group_.create<double>(
-                              () => 0.0, (a, b) => a + b, (a, b) => a - b),
-                          Group_.create<double>(
-                              () => 1.0, (a, b) => a * b, (a, b) => a / b),
-                        )),
+              2.0,
+              1.0,
+              Field_.create(
+                Group_.create<double>(
+                    () => 0.0, (a, b) => a + b, (a, b) => a - b),
+                Group_.create<double>(
+                    () => 1.0, (a, b) => a * b, (a, b) => a / b),
+              )),
           isNot(FieldLerp<double>(
               2.0,
               1.0,
